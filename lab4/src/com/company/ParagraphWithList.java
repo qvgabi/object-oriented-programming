@@ -1,12 +1,18 @@
 package com.company;
 
+import java.io.PrintStream;
+
 public class ParagraphWithList extends Paragraph{
 
+    UnorderedList list;
 
-    UnorderedList list = new UnorderedList();
+    ParagraphWithList() {
+        UnorderedList list = new UnorderedList();
+    }
 
 
-    ParagraphWithList addItemToList(String item){
+    ParagraphWithList addItemToList(String newitem){
+        ListItem item = new ListItem(newitem);
         list.addItem(item);
         return this;
     }
@@ -14,5 +20,12 @@ public class ParagraphWithList extends Paragraph{
     ParagraphWithList setContent(String content){
         list.addItem(new ListItem(content));
         return this;
+    }
+
+
+    void writeHTML(PrintStream out) {
+        out.printf("<p>%s\n",content);
+        list.writeHTML(out);
+        out.printf("</p>\n");
     }
 }
