@@ -33,5 +33,21 @@ public class Document {
         // zapisz niezbędne znaczniki HTML
         // dodaj tytuł i obrazek
         // dla każdej sekcji wywołaj section.writeHTML(out)
+
+        out.printf("<!DOCTYPE html>\n" +
+                "<html lang=\"pl\">\n" +
+                "<head>\n" +
+                "<meta charset=\"UTF-8\">\n" +
+                "<title>CV</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1>%s</h1>\n", title);
+        photo.writeHTML(out);
+        for ( Section element : sections){
+            element.writeHTML(out);
+        }
+        out.printf("</body>\n" +
+                "</html>\n");
+    }
     }
 }
