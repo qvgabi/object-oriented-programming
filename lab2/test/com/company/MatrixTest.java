@@ -88,7 +88,11 @@ public class MatrixTest {
     }
 
     @Test
-    public void shape() {
+    public void sumCols() {
+        Matrix m = new Matrix(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Matrix col = m.sumCols();
+        assertEquals(col.get(2,0), 24,0);
+
     }
 
     @Test

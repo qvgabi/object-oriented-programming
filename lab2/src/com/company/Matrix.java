@@ -164,6 +164,14 @@ public class Matrix {
         return mT;
     }
 
-
+    Matrix sumCols(){
+        Matrix result = new Matrix(new double[this.rows][1]);
+        for(int i=0; i<this.rows;i++){
+            for(int j=0;j<this.cols;j++){
+                result.data[i]+=this.get(i,j);
+            }
+        }
+        return result;
+    }
 
 }
