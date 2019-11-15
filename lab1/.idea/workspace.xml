@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95fb1c29-8cb7-4d21-a249-8e424d3fab13" name="Default Changelist" comment="" />
+    <list default="true" id="95fb1c29-8cb7-4d21-a249-8e424d3fab13" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/Problem115A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/SimpleIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lab1/Lab1/SimpleIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lab1/META-INF/Lab1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab1/Problem610A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab1/Problem610A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/lab2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/out/production/lab2/META-INF/lab2.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/out/production/lab2/MatrixTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/out/production/lab2/com/company/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/out/production/lab2/com/company/Matrix.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2/out/test/lab2/com/company/MatrixTest.class" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +36,14 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1RbGztxWJVqAuxG1Mm8ogy73L3b" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -38,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Fibo">
+  <component name="RunManager" selected="Application.Problem610A">
     <configuration name="Fibo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab1.Fibo" />
       <module name="Lab1" />
@@ -59,8 +86,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Problem610A" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab1.Problem610A" />
+      <module name="Lab1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Problem610A" />
         <item itemvalue="Application.Fibo" />
         <item itemvalue="Application.HelloWorld" />
       </list>
@@ -78,5 +119,16 @@
       <updated>1569928647547</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

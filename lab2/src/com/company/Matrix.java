@@ -125,7 +125,40 @@ public class Matrix {
 
     }
 
-    //analogicznie multiply i divide
+    Matrix mul(Matrix m){
+        Matrix result = new Matrix(this.rows, this.cols);
+        if (rows == m.rows && cols == m.cols) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    result.data[i*cols+j] = this.data[i*cols+j] * m.data[i*cols+j];
+                }
+            }
+        }
+        else{
+            throw new RuntimeException("ZLE WYMIARY");
+        }
+        return result;
+    }
+
+    Matrix div(Matrix m){
+        Matrix result = new Matrix(this.rows, this.cols);
+        if (rows == m.rows && cols == m.cols) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if(m.data[i*cols+j]!=0) {
+                        result.data[i*cols+j] = this.data[i*cols+j] / m.data[i*cols+j];
+                    }
+                    else{
+                        throw new RuntimeException("NIE WOLNO DZIELIC PRZEZ 0");
+                    }
+                }
+            }
+        }
+        else{
+            throw new RuntimeException("DIVIDE --> A co to za wymiary takie brzydkie?");
+        }
+        return result;
+    }
 
     Matrix dot(Matrix m) {
         if (m.cols != this.rows) {
@@ -154,14 +187,34 @@ public class Matrix {
         return Math.pow(frob, 1/2);
     }
 
-    public Matrix getTransposition() {
-        Matrix mT = new Matrix(this.cols, this.rows);
-        for(int i = 0; i < mT.rows; i++) {
-            for (int j = 0; j < mT.cols; j++) {
-                mT.set(i, j, this.get(j,i));
+
+    public static Matrix random(int rows, int cols){
+        Matrix m = new Matrix(rows,cols);
+        Random r = new Random();
+        m.set(0,0, r.nextDouble());
+        //... wypełnij wartościami losowymi
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                m.data[i*cols+j] = r.nextInt(50);
             }
         }
-        return mT;
+        return m;
+    }
+
+    public static Matrix eye(int n){
+        Matrix m = new Matrix(n,n);
+        //... wypełnij jedynkami na przekątnej
+        for(int i=0;i<m.rows;i++){
+            for(int j=0;j<m.cols;j++){
+                if(i == j){
+                    m.data[i*m.cols+j] = 1;
+                }
+                else{
+                    m.data[i*m.cols+j] = 0;
+                }
+            }
+        }
+        return m;
     }
 
     Matrix sumCols(){

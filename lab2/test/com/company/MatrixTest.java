@@ -97,21 +97,35 @@ public class MatrixTest {
 
     @Test
     public void add() {
+        Matrix m1 = new Matrix(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Matrix m2 = new Matrix(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Matrix m3 = new Matrix(new double[][]{{2,4,6},{8,10,12},{14,16,18}});
+
+        Matrix res = m1.add(m2);
+
+        assertEquals(m3.data, res.data);
+
     }
+
 
     @Test
     public void sub() {
+
+
+        Matrix m2 = new Matrix(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Matrix m3 = new Matrix(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Matrix m1 = new Matrix(new double[][]{{2,4,6},{8,10,12},{14,16,18}});
+
+        Matrix res = m1.sub(m2);
+
+        assertEquals(m3.data, res.data);
     }
 
     @Test
     public void dot() {
     }
 
-    @Test
-    public void frobenius() {
-    }
 
-    @Test
-    public void getTransposition() {
-    }
+
+
 }
