@@ -39,6 +39,13 @@ public class Sum extends Node {
         }
         return sign*result;
     }
+    Node diffVanilla(Variable var) {
+        Sum r = new Sum();
+        for(Node n:args){
+            r.add(n.diff(var));
+        }
+        return r;
+    }
 
     int getArgumentsCount(){return args.size();}
 

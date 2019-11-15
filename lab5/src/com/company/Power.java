@@ -35,4 +35,10 @@ public class Power extends Node {
         return b.toString();
     }
 
+    Node diff(Variable var) {
+        Prod r =  new Prod(sign*p,new Power(arg,p-1));
+        r.mul(arg.diff(var));
+        return r;
+    }
+
 }

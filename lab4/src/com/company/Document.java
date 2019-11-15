@@ -9,10 +9,14 @@ public class Document {
     Photo photo;
     List<Section> sections = new ArrayList<>();
 
+    Document(String title){
+        this.setTitle(title);
+    }
 
     Document setTitle(String title){
         this.title = title;
         return this;
+
     }
 
     Document setPhoto(String photoUrl){

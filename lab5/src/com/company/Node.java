@@ -37,4 +37,8 @@ abstract public class Node {
         return 0;
     }
 
+    abstract Node diff(Variable variable);
+
+    abstract boolean isZero();
+
 }
