@@ -1,5 +1,7 @@
 package com.company;
 
+import static java.lang.StrictMath.sqrt;
+
 public class BoundingBox {
     Double xmin;
     Double ymin;
@@ -44,6 +46,7 @@ public class BoundingBox {
      * @return
      */
     boolean contains(BoundingBox bb){
+
         return xmin < bb.xmin && xmax > bb.xmax && ymin < bb.ymin && ymax > bb.ymax;
     }
 
@@ -113,7 +116,26 @@ public class BoundingBox {
      * (ang. haversine formula)
      */
     double distanceTo(BoundingBox bbx){
-        throw new RuntimeException("Not implemented");
+        if(this.isEmpty() && bbx.isEmpty()) {
+            throw new RuntimeException("Error");
+        }
+        double x = (this.getCenterX()-bbx.getCenterX());
+        double y = (this.getCenterY()-bbx.getCenterY());
+        return sqrt(x*x+y*y);
+    }
+
+    @Override
+    public String toString() {
+        return "BoundingBox{"
+                + "xmin="
+                + xmin
+                + ", xmax="
+                + xmax
+                + ", ymin="
+                + ymin
+                + ", ymax="
+                + ymax
+                + '}';
     }
 
 }

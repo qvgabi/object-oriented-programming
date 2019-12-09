@@ -5,22 +5,21 @@ import java.util.Locale;
 
 public class Main {
 
+    public static void main(String[] args) throws IOException {
+        // write your code here
+       /* int counter = 0;
+        CSVReader reader = new CSVReader("admin-units.csv",",",true);
+        while(reader.next() && counter<10){
+            String name = reader.get(2);
+            double area = reader.getDouble(5);
+            //System.out.printf(Locale.US, "%s\n", name);
+            System.out.printf(Locale.US, "%s area: %f\n", name, area);
+            counter++;
+        }*/
 
-    public static void main(String[] args) {
-        new Main();
-    }
+        AdminUnitList aul = new AdminUnitList();
+        String filename = "admin-units.csv";
 
-    public Main() {
-        AdminUnitList list = new AdminUnitList();
-        String filePath = getClass().getResource("/admin-units.csv").getPath();
-
-        try {
-            list.read(filePath);
-            list.list(System.out, 0, 1);
-            System.out.println(list.get(0).children);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        aul.read(filename);
     }
 }
