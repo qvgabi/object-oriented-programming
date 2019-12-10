@@ -94,7 +94,7 @@ public class CSVReader {
 
 
 
-    //zwraca etykiety kolumn
+        //zwraca etykiety kolumn
         public List<String> getColumnLabels(){
             return columnLabels;
         }
@@ -178,7 +178,7 @@ public class CSVReader {
         }
 
 
-        /*
+
         public LocalDate getDate(int columnIndex, DateTimeFormatter format){
             return LocalDate.parse(current[columnIndex],format);
         }
@@ -195,6 +195,6 @@ public class CSVReader {
             return LocalTime.parse(current[columnLabelsToInt.get(columnLabel)], format);
         }
 
-         */
+
     }
 
