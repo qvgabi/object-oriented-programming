@@ -219,6 +219,7 @@ public class AdminUnitList {
      */
 
     AdminUnitList filter(Predicate<AdminUnit> pred) {
+
         return new AdminUnitList(units.stream().filter(pred));
     }
 
@@ -231,7 +232,6 @@ public class AdminUnitList {
 
     AdminUnitList filter(Predicate<AdminUnit> pred, int limit) {
         return new AdminUnitList(units.stream().filter(pred).limit(limit));
-
 
     }
 

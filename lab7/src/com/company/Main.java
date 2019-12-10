@@ -1,70 +1,48 @@
 package com.company;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.Locale;
 import java.util.function.Predicate;
 
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            new Main();
-        } catch (IOException | ColumnNotFoundException e) {
+        AdminUnitList aul = new AdminUnitList();
+
+        try{
+            aul.read("admin-unit.csv");
+            aul.fixAll();
+            aul.list(System.out, 2,3); //list
+            aul.selectByName("Kraków", false).list(System.out); //select
+            AdminUnit au = aul.units.get(4454);
+            AdminUnitList aulist = aul.getNeighbors(au, 14); //neighbours
+            aulist.list(System.out);
+            //czas wyszukiwania
+            double time1 = System.nanoTime()/1e6;
+            double time2 = System.nanoTime()/1e6;
+            System.out.printf(Locale.US,"t2-t1=%f\n",time2-time1);
+
+            aul.filter(a -> a.name.startsWith("G")).sortInplaceByName().list(System.out);
+            aul.filter(a -> a.adminLevel == 5).list(System.out);
+            aul.filter(a -> a.population < 1).filter(a -> a.name.startsWith("M")).list(System.out);
+            aul.filter(a -> a.name.startsWith("W") || a.name.endsWith("a")).list(System.out);
+            aul.filter(a -> a.name.startsWith("Żu") && a.name.endsWith("e"), 1, 3).list(System.out);
+
+            AdminUnitQuery query = new AdminUnitQuery()
+                    .selectFrom(aul)
+                    .where(a->a.area>1500)
+                    .or(a->a.name.startsWith("Wa"))
+                    .sort(Comparator.comparingDouble(a -> a.area))
+                    .limit(10);
+            query.execute().list(System.out);
+
+
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    public Main() throws IOException, ColumnNotFoundException {
-        ExecutionTimer timer = new ExecutionTimer();
-        AdminUnitList list = new AdminUnitList();
-        String filePath = getClass().getResource("/admin-units.csv").getPath();
-        list.read(filePath);
 
-        AdminUnit unit = list.selectByName("^Kraków$", true).units.get(0);
-
-        System.out.println("=== Starting linear search ===");
-        timer.start();
-        AdminUnitList list1 = list.getNeighbors(unit, 10);
-        timer.stop();
-        long time1 = timer.getExecutionTime();
-        System.out.println("=== Linear time: " + time1 / 1000 + "ms");
-        timer.reset();
-
-        System.out.println();
-
-        System.out.println("=== Starting R-Tree search ===");
-        timer.start();
-        AdminUnitList list2 = list.getNeighbours(unit, 10);
-        timer.stop();
-        long time2 = timer.getExecutionTime();
-        System.out.println("=== R-Tree time: " + time2 / 1000 + "ms");
-
-        System.out.println();
-        System.out.println("=== Difference: " + Math.abs(time1 - time2) / 1000 + "ms");
-
-        System.out.println();
-        System.out.println("=== Results:");
-        list2.list(System.out);
-
-        System.out.println("=== Filtering");
-        Predicate<AdminUnit> predicateStartingWithK = item -> item.name.startsWith("K");
-        AdminUnitList unitsStartingWithK = list.filter(predicateStartingWithK);
-        AdminUnitList unitsNotStartingWithK = list.filter(predicateStartingWithK.negate());
-        AdminUnitList districts =
-                list.filter(
-                        item ->
-                                item.adminLevel == 6
-                                        && item.parent != null
-                                        && item.parent.name.equals("województwo małopolskie"));
-        //    unitsStartingWithK.list(System.out)
-
-        AdminUnitQuery query =
-                new AdminUnitQuery()
-                        .selectFrom(list)
-                        .where(item -> item.area > 1000)
-                        .or(item -> item.name.startsWith("Sz"))
-                        .sort((a, b) -> Double.compare(a.area, b.area))
-                        .limit(100);
-
-        query.execute().list(System.out);
     }
 }
