@@ -48,6 +48,26 @@ public class Prod extends Node {
     }
     int getArgumentsCount(){return args.size();}
 
+    @Override
+    Node diff(Variable variable) {
+        Sum s = new Sum();
+        for(int i=0;i<args.size();i++){
+            Prod p= new Prod();
+            for(int j=0;j<args.size();j++){
+                Node f = args.get(j);
+                if(j==i)p.mul(f.diff(variable));
+                else p.mul(f);
+            }
+            s.add(p);
+        }
+        return s;
+    }
+
+    @Override
+    boolean isZero() {
+        return false;
+    }
+
 
     public String toString(){
         StringBuilder b =  new StringBuilder();
@@ -67,19 +87,7 @@ public class Prod extends Node {
 
         return b.toString();
     }
-    Node diffVanilla(Variable var) {
-        Sum r = new Sum();
-        for(int i=0;i<args.size();i++){
-            Prod m= new Prod();
-            for(int j=0;j<args.size();j++){
-                Node f = args.get(j);
-                if(j==i)m.mul(f.diff(var));
-                else m.mul(f);
-            }
-            r.add(m);
-        }
-        return r;
-    }
+
 
 
 }

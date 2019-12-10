@@ -31,5 +31,10 @@ public class Constant extends Node {
         return new Constant(0);
     }
 
+    @Override
+    boolean isZero() {
+        return false;
+    }
+
 
 }
