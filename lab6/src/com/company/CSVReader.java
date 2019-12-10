@@ -178,7 +178,7 @@ public class CSVReader {
         }
 
 
-
+        /*
         public LocalDate getDate(int columnIndex, DateTimeFormatter format){
             return LocalDate.parse(current[columnIndex],format);
         }
@@ -194,5 +194,7 @@ public class CSVReader {
         public LocalTime getTime(String columnLabel, DateTimeFormatter format){
             return LocalTime.parse(current[columnLabelsToInt.get(columnLabel)], format);
         }
+
+         */
     }
 
