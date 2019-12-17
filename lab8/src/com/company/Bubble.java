@@ -12,11 +12,11 @@ import java.awt.*;
         Color lineColor;
         Color fillColor;
 
-        Bubble(int x, int y, double scale, Color lineColor, Color fillColor){
+        Bubble(int x, int y, double scale, Color fillColor){
             this.x=x;
             this.y=y;
             this.scale=scale;
-            this.lineColor=lineColor;
+
             this.fillColor=fillColor;
         }
 
@@ -24,8 +24,8 @@ import java.awt.*;
         public void render(Graphics2D g2d) {
             g2d.setColor(fillColor);
             g2d.fillOval(0,0,100,100);
-            g2d.setColor(lineColor);
-            g2d.drawOval(0,0,100,100);
+//            g2d.setColor(lineColor);
+//            g2d.drawOval(0,0,100,100);
         }
 
         @Override
