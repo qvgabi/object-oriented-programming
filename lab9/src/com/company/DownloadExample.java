@@ -6,8 +6,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Locale;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DownloadExample {
+    static AtomicInteger count=new AtomicInteger(0);
+    static Semaphore sem = new Semaphore(0);
 
     // lista plików do pobrania
     static String [] toDownload = {
@@ -51,12 +55,9 @@ public class DownloadExample {
                 e.printStackTrace();
             }
             System.out.println("Done:"+fileName);
+            count.addAndGet(1);
+            sem.release();
         }
-
-
-
-
-
 
     }
     static void sequentialDownload(){
@@ -69,9 +70,49 @@ public class DownloadExample {
     }
 
 
+    static void concurrentDownload(){
+        double t1 = System.nanoTime()/1e6;
+        for(String url:toDownload){
+            (new Thread(new Downloader(url))).start();
+        }
+        double t2 = System.nanoTime()/1e6;
+        System.out.printf(Locale.US,"t2-t1=%f\n",t2-t1);
+    }
+
+    static void concurrentDownloadv2(){
+        double t1 = System.nanoTime()/1e6;
+        for(String url:toDownload){
+            (new Thread(new Downloader(url))).start();
+        }
+        while(count.get()!=toDownload.length){
+            // wait...
+            Thread.yield();
+        }
+        double t2 = System.nanoTime()/1e6;
+        System.out.printf(Locale.US,"t2-t1=%f\n",t2-t1);
+    }
+
+    static void concurrentDownloadv3() throws InterruptedException {
+        double t1 = System.nanoTime()/1e6;
+        for(String url:toDownload){
+            (new Thread(new Downloader(url))).start();
+        }
+
+        sem.acquire(toDownload.length);
+        double t2 = System.nanoTime()/1e6;
+        System.out.printf(Locale.US,"t2-t1=%f\n",t2-t1);
+    }
+
 
     public static void main(String[] args) {
-        sequentialDownload();
+        //sequentialDownload();
+        //concurrentDownload();
+        //concurrentDownloadv2();
+        try {
+            concurrentDownloadv3();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }
