@@ -15,17 +15,24 @@ public class DrawPanel extends JPanel {
     List<XmasShape> shapes = new ArrayList<>();
 
     DrawPanel() {
-        setBackground(new Color(249, 46, 15, 210));
+        setBackground(new Color(249, 5, 7, 181));
         //Bubble b=new Bubble(200,400,0.5, Color.blue,Color.blue);
         //shapes.add(b);
-        Branch br1 = new Branch(500, 100, 0.5, new Color(52, 130, 80));
-        shapes.add(br1);
-        Branch br2 = new Branch(500, 140, 0.7, new Color(52, 130, 80));
-        shapes.add(br2);
-        Branch br3 = new Branch(500, 200, 0.9, new Color(52, 130, 80));
-        shapes.add(br3);
         Branch br4 = new Branch(500, 270, 1.1, new Color(52, 130, 80));
         shapes.add(br4);
+        Branch br3 = new Branch(500, 200, 0.9, new Color(54, 142, 90, 255));
+        shapes.add(br3);
+        Branch br2 = new Branch(500, 140, 0.7, new Color(56, 152, 98, 255));
+        shapes.add(br2);
+        Branch br1 = new Branch(500, 100, 0.5, new Color(71, 170, 101, 255));
+        shapes.add(br1);
+
+
+
+
+        Star s = new Star(440,35,1, new Color(255, 229, 58));
+        shapes.add(s);
+
 
         Pien p = new Pien(470, 490, 0.7, new Color(160, 82, 27));
         shapes.add(p);
@@ -52,29 +59,12 @@ public class DrawPanel extends JPanel {
         Bubble b6 = new Bubble(630, 460, 0.5, new Color(168, 102, 255));
         shapes.add(b6);
 
+        Bubble zaspa1 = new Bubble(-300, 500, 10, new Color(231, 238, 255));
+        shapes.add(zaspa1);
 
+        Bubble zaspa2 = new Bubble(400, 500, 11, new Color(230, 255, 252));
+        shapes.add(zaspa2);
 
-
-//        for (int k = 3; k < 6; k++) {
-//            Random generator = new Random();
-//            for (int i = 0; i < 3; i++) {
-//                int rand1 = generator.nextInt(20);
-//                int rand2 = generator.nextInt(5);
-//                Bubble b = new Bubble(5 * rand1 + 200, 10 * rand2 + k * 50, 0.5, new Color(255, 193, 51));
-//                shapes.add(b);
-//            }
-//            for (int i = 0; i < 3; i++) {
-//                int rand1 = generator.nextInt(20);
-//                int rand2 = generator.nextInt(5);
-//                Bubble b = new Bubble(5 * rand1 + 200, 10 * rand2 + k * 50, 0.5, new Color(204, 102, 255));
-//                shapes.add(b);
-//            }
-//            for (int i = 0; i < 3; i++) {
-//                int rand1 = generator.nextInt(20);
-//                int rand2 = generator.nextInt(5);
-//                Bubble b = new Bubble(5 * rand1 + 200, 10 * rand2 + k * 50, 0.5, new Color(98, 190, 230));
-//                shapes.add(b);
-//            }
 
         }
 
