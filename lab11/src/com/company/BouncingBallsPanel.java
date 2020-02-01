@@ -11,19 +11,21 @@ public class BouncingBallsPanel extends JPanel {
     boolean stop= true;
 
     static class Ball{
-        int x;
-        int y;
-        double vx;
-        double vy;
-        Color color;
+        int x=10;
+        int y=10;
+        double vx=10;
+        double vy=10;
+        Color color=Color.PINK;
+        int size=30;
 
 
-        public Ball(int x, int y, double vx, double vy, Color color) {
+        public Ball(int x, int y, double vx, double vy, Color color,int size) {
             this.x = x;
             this.y = y;
             this.vx = vx;
             this.vy = vy;
             this.color = color;
+            this.size=size;
         }
 
 
@@ -48,24 +50,35 @@ public class BouncingBallsPanel extends JPanel {
             vy-= impulse[1];
             other.vy+= impulse[1];
         }
+
+
+        public void paint(Graphics2D g2d) {
+            int halfsize = size / 2;
+            g2d.setColor(color);
+            g2d.fillOval(x-halfsize, y-halfsize, size, size);
+        }
+
     }
 
     List<Ball> balls = new ArrayList<>();
 
+
+
     class AnimationThread extends Thread{
-        public void start(){
-            Dimension size = BouncingBallsPanel.this.getSize();
-            int height=size.height;
-            int width=size.width;
-
-            Random random=new Random();
-
-            for (int i = 0; i < 10; i++) {
-                balls.add(new Ball(random.nextInt(width), random.nextInt(height),
-                        random.nextInt(5),random.nextInt(5),Color.PINK));
-            }
-
-        }
+//        public void start(){
+//            System.out.println("sdfdsgsdf");
+//            Dimension size = BouncingBallsPanel.this.getSize();
+//            int height=size.height;
+//            int width=size.width;
+//
+// //           Random random=new Random();
+//
+////            for (int i = 0; i < 10; i++) {
+////                balls.add(new Ball(random.nextInt(width), random.nextInt(height),
+////                        random.nextInt(5),random.nextInt(5),Color.PINK));
+////            }
+//
+//        }
         public void run(){
             System.out.printf("sdgsdfgd");
             //przesuń kulki
@@ -75,9 +88,9 @@ public class BouncingBallsPanel extends JPanel {
             for(;;){
                 if(stop) break;
                 try {
-                    Dimension size = BouncingBallsPanel.this.getSize();
-                    int height = size.height;
-                    int width = size.width;
+                    Dimension sizen = BouncingBallsPanel.this.getSize();
+                    int height = sizen.height;
+                    int width = sizen.width;
 
 
                     for (Ball ball : balls) {
@@ -123,7 +136,7 @@ public class BouncingBallsPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         for (Ball b : balls)
-            g2d.setColor(Color.PINK);
+            b.paint(g2d);
     }
 
     void onStart(){
@@ -149,6 +162,7 @@ public class BouncingBallsPanel extends JPanel {
 
     void onMinus(){
         System.out.println("Remove a ball");
-        balls.remove(0);
+        if (balls.size() > 0)
+            balls.remove(0);
     }
 }
